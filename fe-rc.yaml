@@ -1,0 +1,32 @@
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: fe-rc
+  labels:
+    type: fe-type
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        type: fe-type
+    spec:
+      containers:
+      - name: fe-container
+        image: salrashid123/fe
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        env:
+        - name: USER_VAR
+          value: important information
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace

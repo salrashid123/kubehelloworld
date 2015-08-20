@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fe-srv
+  labels:
+    type: fe-type
+spec:
+  type: LoadBalancer
+  ports:
+  - name: fe
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    type: fe-type

@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: be-rc
+  labels:
+    type: be-type
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        type: be-type
+    spec:
+      containers:
+      - name: be-container
+        image: salrashid123/be
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
