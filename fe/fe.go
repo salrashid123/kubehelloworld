@@ -16,7 +16,7 @@ func getKubeEnv() (map[string]string, error) {
 	environS := os.Environ()
 	environ := make(map[string]string)
 	for _, val := range environS {
-		split := strings.Split(val, "=")
+		split := strings.SplitN(val, "=", 2)
 		if len(split) != 2 {
 			return environ, fmt.Errorf("Some weird env vars")
 		}

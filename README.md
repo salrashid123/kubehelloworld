@@ -6,11 +6,7 @@ This is merely to demonstrate Kubernetes service discovery in [Google Container 
 
 Parts of this sample code is from the default kubernetes 'guestbook' example.
 
-####Overview  
-
-This simple application is a basic frontend + backend.  
 HTTP requests to the frontend handler causes a service lookup for the backend and retrieves some data from the backend.  
-Which makes the flow over HTTP  
 
 user --> loadbalancer --> frontend --> lookup backend service --> make backend API call --> return data to fronend --> return web page to user showing some data from the backend.  
 
@@ -18,7 +14,7 @@ user --> loadbalancer --> frontend --> lookup backend service --> make backend A
 
 The frontend consists of a golang program that listens for http requests on port :8080.  It is wrapped in the container  
 
-[salrashid123/fe](https://hub.docker.com/r/salrashid123/be/)
+[salrashid123/fe](https://hub.docker.com/r/salrashid123/fe/)
 
 The frontend service is configured to startup 2 replicas inside a Loaldbalanced Kubernetes service:
 
@@ -231,7 +227,7 @@ kubectl get svc
 NAME         LABELS           SELECTOR       IP(S)            PORT(S)
 be-srv       type=be-type     type=be-type   10.167.252.252   5000/TCP
 fe-srv       type=fe-type     type=fe-type   10.167.249.76    80/TCP
-                              >>>>>>>>>>>>>  104.197.44.11   
+                                             104.197.44.11   
 kubernetes   component=apiserver,provider=kubernetes 10.167.240.1     443/TCP
 ```
 
@@ -261,6 +257,7 @@ ENV Lookup Response from backend
 BACKEND Response
 Found DNS lookup backend ip: be-srv.default.svc.cluster.local. port: 5000
 DNS Lookup Response from backend
+BACKEND Response
 ```
 
 
