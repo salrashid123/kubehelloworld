@@ -143,7 +143,9 @@ spec:
 ### Discovery
 
 Once a request hits any pod running the frontend service, the front end attempts to discover how to connect to the backend service.  This is done in two ways:  using environment variables or (preferably), by DNS SRV lookups.  
-Each node in the cluster runs a local [DNS](https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/dns) server.
+Each node in the cluster runs a local [DNS](https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/dns) server.  
+
+Also see [Kubernetes networking](https://github.com/kubernetes/kubernetes/blob/release-1.0/docs/design/networking.md)
 
 **Environment Variables**
 ```go
@@ -286,6 +288,12 @@ The firwall, network configuration created for this example are:
 ![Forwarding Rule](images/forwarding.png) 
 
 ![Target Pool](images/targetpool.png) 
+
+![Network Routes](images/routes.png)
+
+![Network Node1](images/route1.png)
+
+![Network Node2](images/route2.png) 
 
 
 ###Extending the sample
