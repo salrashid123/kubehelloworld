@@ -269,7 +269,9 @@ The output also shows the DNS SRV request contained the host and port to connect
 
 
 ###Call Flow
-The following shows the call flow between the calls as a 
+The following shows the call flow between the the frontend and backend.  
+
+For a detailed description of the proxy and VIPs, see [Kubernetes Services](http://kubernetes.io/v1.0/docs/user-guide/services.html#ips-and-vips)
 
 ![Call Flow](images/kube_flow.png) 
 
