@@ -16,7 +16,9 @@ user --> loadbalancer --> frontend --> lookup backend service --> make backend A
 
 ####Frontend/backend Services
 
-The frontend consists of a golang program that listens for http requests on port :8080.  It is wrapped in the container  *salrashid123/fe*  
+The frontend consists of a golang program that listens for http requests on port :8080.  It is wrapped in the container  
+
+[salrashid123/fe](https://hub.docker.com/r/salrashid123/be/)
 
 The frontend service is configured to startup 2 replicas inside a Loaldbalanced Kubernetes service:
 
@@ -79,7 +81,8 @@ spec:
 ####Backend
 
 The backend consists of another golang program which for http requests on port :5000.  It is wrapped in the container  
-*salrashid123/be*
+
+[salrashid123/be](https://hub.docker.com/r/salrashid123/be/)
 
 Backend uses the advertises the label *be-type* 
 
