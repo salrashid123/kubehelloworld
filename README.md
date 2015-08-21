@@ -4,7 +4,9 @@ Sample application that deploys a trivial [Kubernetes service](https://github.co
 
 This is merely to demonstrate Kubernetes service discovery in [Google Container Engine (GKE)](https://cloud.google.com/container-engine/docs/services/), nothing more and is based off the guestbook service example.
 
-Parts of this sample code is from the default kubernetes 'guestbook' example.
+Parts of this sample code is from the default kubernetes 'environment-guide' example.  
+
+**From kubernetes [environment guide](https://github.com/kubernetes/kubernetes/tree/v1.0.1/examples/environment-guide) Example**
 
 HTTP requests to the frontend handler causes a service lookup for the backend and retrieves some data from the backend.  
 
