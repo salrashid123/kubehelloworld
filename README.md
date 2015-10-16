@@ -18,7 +18,7 @@ The frontend consists of a golang program that listens for http requests on port
 
 [salrashid123/fe](https://hub.docker.com/r/salrashid123/fe/)
 
-The frontend service is configured to startup 2 replicas inside a Loaldbalanced Kubernetes service:
+The frontend service is configured to startup 2 replicas inside a Loadbalanced Kubernetes service:
 
 **Frontend**
 #####Replication Controller
