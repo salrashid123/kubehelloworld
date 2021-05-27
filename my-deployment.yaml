@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+  labels:
+    type: myapp-deployment-label
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      type: myapp
+  template:
+    metadata:
+      labels:
+        type: myapp
+        tier: frontend
+        version: v1
+    spec:
+      containers:
+      - name: frontend
+        image: salrashid123/fe
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        env:
+        - name: CUR_VER
+          value: metadata.labels.ver
+        - name: MY_POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: MY_POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: MY_POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP

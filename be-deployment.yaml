@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: be-deployment
+  labels:
+    type: be-deployment-label
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      type: be
+  template:
+    metadata:
+      labels:
+        type: be
+        tier: backend
+        version: v1
+    spec:
+      containers:
+      - name: backend
+        image: salrashid123/be
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        env:
+        - name: CUR_VER
+          value: metadata.labels.ver
+        - name: MY_POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: MY_POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: MY_POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
